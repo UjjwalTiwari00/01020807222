@@ -18,20 +18,22 @@ const AllProducts = () => {
   });
 
   const fetchProducts = async () => {
-    const token = localStorage.getItem('authToken'); // Retrieve the token from localStorage
+    const token = localStorage.getItem('token'); 
 
     try {
       const response = await axios.get(`${API_URL}/${filters.company}/categories/${filters.category}/products`, {
         params: {
-          top: 10, // Adjust based on your needs
+          top: 10,
           minPrice: filters.minPrice,
           maxPrice: filters.maxPrice
         },
         headers: {
-          'Authorization': `Bearer ${token}` // Use the token from localStorage
+          'Authorization': `Bearer ${token}` 
         }
       });
       setProducts(response.data);
+      console.log("this is response");
+      console.log(response);
     } catch (error) {
       console.error("Error fetching products:", error);
     }

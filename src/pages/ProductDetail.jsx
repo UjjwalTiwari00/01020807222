@@ -10,12 +10,12 @@ const ProductDetail = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const token = localStorage.getItem('authToken'); // Retrieve the token from localStorage
+      const token = localStorage.getItem('authToken');
 
       try {
         const response = await axios.get(`${API_URL}/product/${id}`, {
           headers: {
-            'Authorization': `Bearer ${token}` // Use the token from localStorage
+            'Authorization': `Bearer ${token}`
           }
         });
         setProduct(response.data);
@@ -38,7 +38,7 @@ const ProductDetail = () => {
       <p className="mb-2">Rating: {product.rating}</p>
       <p className="mb-2">Discount: {product.discount}%</p>
       <p className="mb-2">Availability: {product.availability}</p>
-      {/* Add other details here */}
+     
     </div>
   );
 };

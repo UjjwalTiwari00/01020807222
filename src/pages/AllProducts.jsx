@@ -18,6 +18,8 @@ const AllProducts = () => {
   });
 
   const fetchProducts = async () => {
+    const token = localStorage.getItem('authToken'); // Retrieve the token from localStorage
+
     try {
       const response = await axios.get(`${API_URL}/${filters.company}/categories/${filters.category}/products`, {
         params: {
@@ -26,7 +28,7 @@ const AllProducts = () => {
           maxPrice: filters.maxPrice
         },
         headers: {
-          'Authorization': `Bearer YOUR_TOKEN_HERE`
+          'Authorization': `Bearer ${token}` // Use the token from localStorage
         }
       });
       setProducts(response.data);
